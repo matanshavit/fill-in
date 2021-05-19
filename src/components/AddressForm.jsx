@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { css } from "@emotion/css";
 
+import AddressContext from "../contexts/AddressContext";
 import colors from "../colors";
 
 const styles = {
@@ -44,28 +46,49 @@ const styles = {
     }
   `,
 };
-const AddressForm = () => (
-  <form className={styles.form}>
-    <div className={styles.inputRow}>
-      <span className={styles.label}>Street</span>
-      <input name="street" className={styles.input} />
-    </div>
-    <div className={styles.inputRow}>
-      <span className={styles.label}>City</span>
-      <input name="city" className={styles.input} />
-    </div>
-    <div className={styles.inputRow}>
-      <span className={styles.label}>State</span>
-      <input name="state" className={styles.input} />
-    </div>
-    <div className={styles.inputRow}>
-      <span className={styles.label}>Zip Code</span>
-      <input name="zipCode" className={styles.input} />
-    </div>
-    <div className={styles.submitRow}>
-      <input type="submit" value="Submit" className={styles.submit} />
-    </div>
-  </form>
-);
+
+const AddressForm = () => {
+  const { address } = useContext(AddressContext);
+
+  return (
+    <form className={styles.form}>
+      <div className={styles.inputRow}>
+        <span className={styles.label}>Street</span>
+        <input
+          name="street"
+          className={styles.input}
+          defaultValue={address.street}
+        />
+      </div>
+      <div className={styles.inputRow}>
+        <span className={styles.label}>City</span>
+        <input
+          name="city"
+          className={styles.input}
+          defaultValue={address.city}
+        />
+      </div>
+      <div className={styles.inputRow}>
+        <span className={styles.label}>State</span>
+        <input
+          name="state"
+          className={styles.input}
+          defaultValue={address.state}
+        />
+      </div>
+      <div className={styles.inputRow}>
+        <span className={styles.label}>Zip Code</span>
+        <input
+          name="zipCode"
+          className={styles.input}
+          defaultValue={address.zipCode}
+        />
+      </div>
+      <div className={styles.submitRow}>
+        <input type="submit" value="Submit" className={styles.submit} />
+      </div>
+    </form>
+  );
+};
 
 export default AddressForm;

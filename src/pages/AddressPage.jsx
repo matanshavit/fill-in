@@ -1,5 +1,6 @@
 import { css } from "@emotion/css";
 
+import AddressContextProvider from "../contexts/AddressContext/Provider";
 import AddressForm from "../components/AddressForm";
 
 const styles = {
@@ -12,7 +13,9 @@ const styles = {
 const AddressPage = () => (
   <div className={styles.page}>
     <h1 className={styles.heading}>Addess Form</h1>
-    <AddressForm />
+    <AddressContextProvider>
+      <AddressForm />
+    </AddressContextProvider>
   </div>
 );
 
