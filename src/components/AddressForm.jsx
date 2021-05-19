@@ -1,5 +1,6 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { css } from "@emotion/css";
+import { useForm } from "react-hook-form";
 
 import AddressContext from "../contexts/AddressContext";
 import colors from "../colors";
@@ -49,39 +50,32 @@ const styles = {
 
 const AddressForm = () => {
   const { address } = useContext(AddressContext);
+  const { register, reset } = useForm();
+
+  useEffect(() => {
+    reset(address);
+  }, [address, reset]);
 
   return (
     <form className={styles.form}>
       <div className={styles.inputRow}>
         <span className={styles.label}>Street</span>
-        <input
-          name="street"
-          className={styles.input}
-          defaultValue={address.street}
-        />
+        <input className={styles.input} {...register("street")} />
       </div>
       <div className={styles.inputRow}>
         <span className={styles.label}>City</span>
-        <input
-          name="city"
-          className={styles.input}
-          defaultValue={address.city}
-        />
+        <input className={styles.input} {...register("city")} />
       </div>
       <div className={styles.inputRow}>
         <span className={styles.label}>State</span>
-        <input
-          name="state"
-          className={styles.input}
-          defaultValue={address.state}
-        />
+        <input className={styles.input} {...register("state")} />
       </div>
       <div className={styles.inputRow}>
         <span className={styles.label}>Zip Code</span>
         <input
-          name="zipCode"
           className={styles.input}
-          defaultValue={address.zipCode}
+          ref={register}
+          {...register("zipCode")}
         />
       </div>
       <div className={styles.submitRow}>

@@ -7,6 +7,7 @@
     "modern-normalize": "^1.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.6.2",
     "react-scripts": "4.0.3"
   },
   "scripts": {
@@ -27,7 +28,8 @@
     },
     "rules": {
       "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off"
+      "react/prop-types": "off",
+      "react/jsx-props-no-spreading": "off"
     }
   },
   "browserslist": {
